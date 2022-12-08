@@ -1,0 +1,63 @@
+@startuml "x"
+class User <<Entity>>{
+    + name: String
+    + email: String
+    + phone: String
+    + findPT(): [PT]
+}
+
+class PT <<Entity>>{
+    + price: Number
+    + branch: Branch
+    + Location: Location[]
+}
+
+class Athlete <<Entity>> {
+    + measurements: [Measurements]
+}
+
+enum Branch{
+    FITNESS
+    BODY_BUILDING
+    YOGA
+}
+
+interface Measurements <<ValueObject>>{
+    + type: String
+    + value: Number
+    + unit: String
+}
+
+class BMI <<ValueObject>>{
+    + type: String
+    + value: Number
+    + unit: String
+}
+
+class Wall <<Entity>>{
+    + text: String
+    + delete()
+    + comments: Wall[]
+} 
+
+class Location <<Entity>>{
+    + coords: Number[]
+    + name: String
+}
+
+class Discount <<Entity>>{
+    + discountPercentage: Number
+}
+
+
+BMI -up-|> Measurements
+Athlete -UP-|> User
+PT -up-|> User
+PT --> "1" Branch
+PT "1..n" o--> "0..n" Location
+User "0..n" *--> "1" Wall 
+Athlete --> Discount
+
+'Ödev bunları kendi projemize dökmemiz.
+
+@enduml

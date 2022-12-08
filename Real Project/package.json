@@ -1,0 +1,15 @@
+{
+  "name": "real-project",
+  "version": "1.0.0",
+  "description": "My npm files for real time application ",
+  "main": "tekrar.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ahmet Zorlutuna <ahmettayyip3439@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0"
+  }
+}
