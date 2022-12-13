@@ -1,4 +1,4 @@
-const fs = require('fs')
+/* const fs = require('fs')
 const flatted = require('flatted')
 
 const save = (filename, objects) => {
@@ -12,7 +12,8 @@ const load = (filename) => {
 
 const insert = (filename, object) => {
     const objects = load(filename)
-    save(filename, objects.concat(object))
+    objects.push(object)
+    save(filename, objects)
 }
 
 const remove = (filename, index) => {
@@ -21,9 +22,10 @@ const remove = (filename, index) => {
     save(filename, objects)
 }
 
-const findByName = (filename, name) =>{
+const findByName = (filename, name) => {
     const objects = load(filename)
     return objects.find(o => o.name == name)
-}
+} */
 
-module.exports = { save, load, insert, remove, findByName }
+/* module.exports = { save, load, insert, remove, findByName }
+ */
