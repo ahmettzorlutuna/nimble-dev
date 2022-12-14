@@ -1,5 +1,5 @@
 const Booking = require('./booking')
-class Passenger {
+class passenger {
     constructor(name, location) {
         this.name = name
         this.bookings = []
@@ -12,9 +12,6 @@ class Passenger {
 
         return booking
     }
-    /* printBookingHistory(){
-        this.bookings.forEach(printBooking)
-    } */
 }
 
-module.exports = Passenger;
+module.exports = passenger;

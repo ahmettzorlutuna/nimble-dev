@@ -1,8 +1,8 @@
+const colors = require('colors')
 const Passenger = require('./passenger')
 const Driver = require('./driver')
-const PassengerDatabase = require('./passenger-database')
 const DriverDatabase = require('./driver-database')
-
+const PassengerDatabase = require('./passenger-database')
 
 const ahmet = new Passenger("Ahmet", "Miami")
 const tuna = new Passenger("Tuna", "NJ")
@@ -25,35 +25,7 @@ function printBooking(booking) {
     console.log(`${booking.passenger.name.yellow} is going ${booking.destination.yellow.bold} from ${booking.origin.yellow} now. Estimated time not calculated yet.`)
 }
 
+PassengerDatabase.save([ahmet])
+const data = PassengerDatabase.load('passenger')
 
-PassengerDatabase.save([ahmet, tuna])
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* const betul = db.findByName('passengers', 'Betul')
-printAllBookings(betul)
-
-
-
-const data = db.load('passengers')
-console.log(data) */
-
-
-/* const data = db.load('passengers')
-console.log(data) */
-
-
-
-
-
-
+console.log(data)

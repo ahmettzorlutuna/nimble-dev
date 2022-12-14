@@ -1,4 +1,4 @@
-/* const fs = require('fs')
+const fs = require('fs')
 const flatted = require('flatted')
 
 const save = (filename, objects) => {
@@ -25,7 +25,6 @@ const remove = (filename, index) => {
 const findByName = (filename, name) => {
     const objects = load(filename)
     return objects.find(o => o.name == name)
-} */
+}
 
-/* module.exports = { save, load, insert, remove, findByName }
- */
+module.exports = { save, load, insert, remove, findByName }
