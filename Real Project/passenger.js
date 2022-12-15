@@ -1,17 +1,19 @@
 const Booking = require('./booking')
-class passenger {
-    constructor(name, location) {
+class Passenger {
+    constructor(name, location, bookings = []) {
         this.name = name
-        this.bookings = []
+        this.bookings = bookings
         this.location = location
     }
     book(driver, origin, destination) {
         const booking = new Booking(driver, this, origin, destination)
-
-        this.bookings.push(booking);
-
+        this.bookings.push(booking)
         return booking
+    }
+
+    static create({name, location, bookings}){
+        return new Passenger(name,location,bookings)
     }
 }
 
-module.exports = passenger;
+module.exports = Passenger;

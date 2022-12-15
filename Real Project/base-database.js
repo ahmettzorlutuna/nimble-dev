@@ -12,24 +12,20 @@ class BaseDatabase{
     
     load(){
         const file = fs.readFileSync(`./${this.filename}.json`, 'utf8')
-        return flatted.parse(file)
+        const objects = flatted.parse(file)
+        return objects.map(this.model.create)
     }
     
     insert (object){
         const objects = this.load()
         objects.push(object)
-        save(objects)
+        this.save(objects)
     }
     
     remove(index){
         const objects = this.load()
         objects.splice(index, 1)
-        save(objects)
-    }
-    
-    findByName(name){
-        const objects = this.load()
-        return objects.find(o => o.name == name)
+        this.save(objects)
     }
 }
 
