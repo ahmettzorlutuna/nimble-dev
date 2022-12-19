@@ -1,19 +1,21 @@
 const Booking = require('./booking')
+const uuid = require('uuid')
 class Passenger {
-    constructor(name, location, bookings = []) {
+    constructor(name, location, bookings = [], id = uuid.v4()) {
+        this.id = id
         this.name = name
-        this.bookings = bookings
         this.location = location
+        this.bookings = bookings
     }
-    book(driver, origin, destination) {
+    book(driver, origin = undefined, destination = undefined) {
         const booking = new Booking(driver, this, origin, destination)
         this.bookings.push(booking)
         return booking
     }
 
-    static create({name, location, bookings}){
-        return new Passenger(name,location,bookings)
+    static create({name, location, bookings, id}){
+        return new Passenger(name,location,bookings, id)
     }
 }
 
-module.exports = Passenger;
+module.exports = Passenger

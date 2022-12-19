@@ -27,6 +27,13 @@ class BaseDatabase{
         objects.splice(index, 1)
         this.save(objects)
     }
+
+    update(object){
+        const objects = this.load()
+        const index = objects.findIndex(o => o.id == object.id)
+        objects.splice(index, 1, object)
+        this.save(objects)
+    }
 }
 
 module.exports = BaseDatabase
