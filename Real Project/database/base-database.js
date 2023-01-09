@@ -34,6 +34,9 @@ class BaseDatabase{
         objects.splice(index, 1, object)
         this.save(objects)
     }
+    findBy(property, value){
+        return this.load().find(o => o[property] == value)
+    }
 }
 
 module.exports = BaseDatabase
