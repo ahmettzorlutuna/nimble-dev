@@ -2,6 +2,7 @@ const colors = require('colors')
 const Passenger = require('./passenger')
 const Driver = require('./driver')
 const {driverDatabase, passengerDatabase} = require('./database')
+const { findBy } = require('./database/passenger-database')
 
 const ahmet = new Passenger("Ahmet", "Miami")
 const tuna = new Passenger("Tuna", "NJ")
@@ -25,16 +26,9 @@ function printBooking(booking) {
     console.log(`${booking.passenger.name.yellow} is going ${colors.yellow.bold(booking.destination)} from ${colors.yellow(booking.origin)} now. Estimated time not calculated yet.`)
 }
 
-const objects = passengerDatabase.load()
-console.log(objects)
 
-const Ahmet = passengerDatabase.findByName('Ahmet')
-const Tuna = passengerDatabase.findByName('Tuna')
 
-Tuna.book(cj,'Seatlle','Boston')
 
-printAllBookings(Ahmet)  
-printAllBookings(Tuna)  
 
 
 
