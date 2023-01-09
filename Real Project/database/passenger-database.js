@@ -3,8 +3,11 @@ const Passenger = require('../passenger')
 
 class PassengerDatabase extends BaseDatabase{
     findByName(name){
-        const objects = this.load()
-        return objects.find(o => o.name == name)
+        return this.findBy('name' == name)
+    }
+
+    findByLocation(location){
+        return this.findBy('location' == location)
     }
 }
 
