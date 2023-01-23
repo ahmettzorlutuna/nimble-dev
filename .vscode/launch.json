@@ -7,11 +7,11 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Launch Current File",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/Real Project/index.js",
+            "program": "${file}",
             "cwd": "${workspaceFolder}/Real Project"
         }
     ]
