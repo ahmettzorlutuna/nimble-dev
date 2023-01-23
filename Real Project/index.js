@@ -1,35 +1,28 @@
-const colors = require('colors')
-const Passenger = require('./passenger')
-const Driver = require('./driver')
-const {driverDatabase, passengerDatabase} = require('./database')
-const { findBy } = require('./database/passenger-database')
+const { passengerDatabase, driverDatabase } = require("./database");
+const Passenger = require("./models/passenger");
+const Driver = require("./models/driver");
+const print = require("./lib/print-booking-history");
 
-const ahmet = new Passenger("Ahmet", "Miami")
-const tuna = new Passenger("Tuna", "NJ")
-const cj = new Driver("Cj", "Enderson Tower");
-const alex = new Driver("Alex", "Kadıköy");
+const memo = new Passenger("Memo", "NJ");
+const yali = new Passenger("Yali", "Miami");
 
-const booking1 = ahmet.book(cj, "Miami", "LosAngeles")
-const booking2 = ahmet.book(cj, "İstanbul", "Esengeless")
-const booking3 = ahmet.book(cj, "Tokyo", "Korea")
-const booking6 = tuna.book(cj, "LA", "Miami")
-const booking7 = tuna.book(cj, "İstanbul", "Boston")
+const driver = new Driver("Driver", "Miami");
 
-function printAllBookings(passenger) {
-    if(passenger.bookings.length == 0){
-        console.log(`${passenger.name.red.bold} has no bookings yet.`)
-    }
-    passenger.bookings.forEach(printBooking); 
-}
+const booking1 = memo.book(driver, "Miami", "LosAngeles");
+const booking2 = memo.book(driver, "İstanbul", "Esengeless");
+const booking3 = memo.book(driver, "Tokyo", "Korea");
+const booking6 = yali.book(driver, "LA", "Miami");
+const booking7 = yali.book(driver, "İstanbul", "Boston");
 
-function printBooking(booking) {
-    console.log(`${booking.passenger.name.yellow} is going ${colors.yellow.bold(booking.destination)} from ${colors.yellow(booking.origin)} now. Estimated time not calculated yet.`)
-}
-
-
-
-
-
-
-
-
+console.log("Write dbs");
+passengerDatabase.save([memo, yali], () => {
+  console.log("Wrote passenger");
+  driverDatabase.save([driver], () => {
+    const ahmet = Passenger.create({name: "Ahmet", location: "LA"})
+    passengerDatabase.insert(ahmet, () => {
+        const passengerData = passengerDatabase.load();
+        passengerData.forEach(print);
+        console.log("done");
+    })
+  });
+});
