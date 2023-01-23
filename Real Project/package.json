@@ -1,7 +1,7 @@
 {
   "name": "real-project",
   "version": "1.0.0",
-  "description": "My npm files for real time applicationn ",
+  "description": "My npm files for real time applicationn",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
