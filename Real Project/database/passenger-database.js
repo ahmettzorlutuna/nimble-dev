@@ -1,5 +1,5 @@
 const BaseDatabase = require('./base-database')
-const Passenger = require('../passenger')
+const Passenger = require('../models/passenger')
 
 class PassengerDatabase extends BaseDatabase{
     findByName(name){

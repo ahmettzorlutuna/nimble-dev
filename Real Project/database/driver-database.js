@@ -1,5 +1,5 @@
 const BaseDatabase = require('./base-database')
-const Driver = require('../driver')
+const Driver = require('../models/driver')
 
 class DriverDatabase extends BaseDatabase{
     
