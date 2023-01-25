@@ -14,15 +14,47 @@ const booking3 = memo.book(driver, "Tokyo", "Korea");
 const booking6 = yali.book(driver, "LA", "Miami");
 const booking7 = yali.book(driver, "İstanbul", "Boston");
 
-console.log("Write dbs");
-passengerDatabase.save([memo, yali], () => {
-  console.log("Wrote passenger");
-  driverDatabase.save([driver], () => {
-    const ahmet = Passenger.create({name: "Ahmet", location: "LA"})
-    passengerDatabase.insert(ahmet, () => {
-        const passengerData = passengerDatabase.load();
-        passengerData.forEach(print);
-        console.log("done");
-    })
-  });
-});
+//Promise without await
+// passengerDatabase.save([memo,yali]).then(() => {
+//   console.log("Wrote passenger");
+//   driverDatabase.save([driver]).then(() => {
+//     console.log("wrote driver");
+//     const ahmet = Passenger.create({name: "Ahmet", location: "LA"})
+
+//     passengerDatabase.insert(ahmet)
+//       .then(() => passengerDatabase.load())
+//       .then(passengers => {
+//         passengers.forEach(print)
+//       })
+//   })
+// })
+
+//Promise with await
+(async () => {
+  try {
+    await passengerDatabase.save([memo, yali]);
+    await driverDatabase.save([driver]);
+
+    const ahmet = Passenger.create({ name: "Ahmet", location: "LA" });
+
+    await passengerDatabase.insert(ahmet);
+    const passengers = await passengerDatabase.load();
+    passengers.forEach(print);
+  } catch (error) {
+    return console.log(error);
+  }
+})();
+
+// console.log("Write dbs");
+// passengerDatabase.save([memo, yali], () => {
+//   console.log("Wrote passenger");
+//   driverDatabase.save([driver], () => {
+//     console.log("done");
+//     const ahmet = Passenger.create({name: "Ahmet", location: "LA"})
+//     passengerDatabase.insert(ahmet, ()=> {
+//       passengerDatabase.load((err,passengers) => {
+//         passengers.forEach(print)
+//       })
+//     })
+//   })
+// })
