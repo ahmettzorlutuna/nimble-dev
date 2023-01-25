@@ -43,7 +43,7 @@ const booking7 = yali.book(driver, "İstanbul", "Boston");
   } catch (error) {
     return console.log(error);
   }
-})();
+})()
 
 // console.log("Write dbs");
 // passengerDatabase.save([memo, yali], () => {
@@ -58,3 +58,4 @@ const booking7 = yali.book(driver, "İstanbul", "Boston");
 //     })
 //   })
 // })
+//adssadas
