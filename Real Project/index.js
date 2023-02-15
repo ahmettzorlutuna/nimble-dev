@@ -35,12 +35,12 @@ const booking7 = yali.book(driver, "İstanbul", "Boston");
     await passengerDatabase.save([memo, yali]);
     await driverDatabase.save([driver]);
     const passengers = await passengerDatabase.load()
-    console.log(passengers)
+    console.log(passengers);
     // const yali2 = await passengerDatabase.findByName("Yali")
     // yali2.book(driver,"Miami","Esengeless")
     // console.log(yali2)
     // const passengers = await passengerDatabase.load();
-    // passengers.forEach(print);
+    // // passengers.forEach(print);
   } catch (error) {
     return console.log(error);
   }
