@@ -40,7 +40,7 @@ const booking7 = yali.book(driver, "İstanbul", "Boston");
     // yali2.book(driver,"Miami","Esengeless")
     // console.log(yali2)
     // const passengers = await passengerDatabase.load();
-    // // passengers.forEach(print);
+    // passengers.forEach(print);
   } catch (error) {
     return console.log(error);
   }
