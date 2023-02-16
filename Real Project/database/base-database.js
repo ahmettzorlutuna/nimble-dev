@@ -21,18 +21,17 @@ class BaseDatabase{
             fs.readFile(`${__dirname}/${this.filename}.json`, 'utf8',(err,file) =>{
                 if(err) return reject(err)
                 const objects = flatted.parse(file)
-    
-                //resolve(objects.map(this.model.create)) //callback(err,file)
+                resolve(objects.map(this.model.create)) //callback(err,file)
             })
         })
     }
     //With promise
     //In this api first time we using load and save api
+    //Bir fonksiyonun içnide await keyword ünü kullanıyorsak o fonksiyonun asenkron olduğunu async olarak belirtmemiz gerekiyor.
     async insert (object){
         const objects = await this.load()
         objects.push(object)
         return this.save(objects)
-
     }
     
     async remove(index){
@@ -48,8 +47,7 @@ class BaseDatabase{
         return this.save(objects)
     }
     async findBy(property, value){
-        const objects = await this.load()
-        return objects.find(o => o[property] == value)
+        return (await this.load()).find(o => o[property] == value);
     }
     async findByName(name){
         const objects = await this.load()
