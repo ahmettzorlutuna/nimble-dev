@@ -32,15 +32,15 @@ const booking7 = yali.book(driver, "İstanbul", "Boston");
 //Promise with await
 (async () => {
   try {
-    await passengerDatabase.save([memo, yali]);
-    await driverDatabase.save([driver]);
     const passengers = await passengerDatabase.load()
-    console.log(passengers);
-    // const yali2 = await passengerDatabase.findByName("Yali")
-    // yali2.book(driver,"Miami","Esengeless")
-    // console.log(yali2)
-    // const passengers = await passengerDatabase.load();
-    // // passengers.forEach(print);
+    await passengerDatabase.save([yali, memo]);
+    await driverDatabase.save([driver]);
+
+    const Betul = new Passenger("Betül","Esengelersss")
+    Betul.book(driver,"asdas","La32")
+    await passengerDatabase.insert(Betul)
+    passengers.forEach(print)
+
   } catch (error) {
     return console.log(error);
   }
