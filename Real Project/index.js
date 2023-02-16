@@ -11,7 +11,7 @@ const driver = new Driver("Driver", "Miami");
 const booking1 = memo.book(driver, "Miami", "LosAngeles");
 const booking2 = memo.book(driver, "İstanbul", "Esengeless");
 const booking3 = memo.book(driver, "Tokyo", "Korea");
-const booking6 = yali.book(driver, "LA", "Miami");
+const booking6 = yali.book(driver, "LA", "Mıami");
 const booking7 = yali.book(driver, "İstanbul", "Boston");
 
 //Promise without await
