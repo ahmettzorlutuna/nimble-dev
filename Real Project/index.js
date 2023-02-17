@@ -37,7 +37,7 @@ const booking7 = yali.book(driver, "İstanbul", "Boston");
     await driverDatabase.save([driver]);
 
     const Betul = new Passenger("Betül","Esengelersss")
-    Betul.book(driver,"asdas","La32")
+    Betul.book(driver,"LosAngeles","Bakü")
     await passengerDatabase.insert(Betul)
     passengers.forEach(print)
 
