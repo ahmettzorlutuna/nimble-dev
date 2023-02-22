@@ -11,4 +11,4 @@ class PassengerDatabase extends BaseDatabase{
     }
 }
 
-module.exports = new PassengerDatabase(Passenger)
+module.exports = new PassengerDatabase(Passenger) //new keyword for singleton pattern

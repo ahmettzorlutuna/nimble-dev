@@ -5,4 +5,4 @@ class DriverDatabase extends BaseDatabase{
     
 }
 
-module.exports = new DriverDatabase(Driver)
+module.exports = new DriverDatabase(Driver) //new keyword for singleton pattern
