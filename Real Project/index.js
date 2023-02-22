@@ -1,62 +1,19 @@
-const { passengerDatabase, driverDatabase } = require("./database");
-const Passenger = require("./models/passenger");
-const Driver = require("./models/driver");
-const print = require("./lib/print-booking-history");
+const {passengerDatabase} = require('./database')
+const flatted = require('flatted')
 
-const memo = new Passenger("Memo", "NJ");
-const yali = new Passenger("Yali", "Miami");
+const express = require('express') 
+const app = express()
+const port = 3000
 
-const driver = new Driver("Driver", "Miami");
+app.get('/',(req,res) =>{
+    res.send('Hello Worlddd')
+})
 
-const booking1 = memo.book(driver, "Miami", "LosAngeles");
-const booking2 = memo.book(driver, "İstanbul", "Esengeless");
-const booking3 = memo.book(driver, "Tokyo", "Korea");
-const booking6 = yali.book(driver, "LA", "Mıami");
-const booking7 = yali.book(driver, "İstanbul", "Boston");
-
-//Promise without await
-// passengerDatabase.save([memo,yali]).then(() => {
-//   console.log("Wrote passenger");
-//   driverDatabase.save([driver]).then(() => {
-//     console.log("wrote driver");
-//     const ahmet = Passenger.create({name: "Ahmet", location: "LA"})
-
-//     passengerDatabase.insert(ahmet)
-//       .then(() => passengerDatabase.load())
-//       .then(passengers => {
-//         passengers.forEach(print)
-//       })
-//   })
-// })
-
-//Promise with await
-(async () => {
-  try {
+app.get('/passengers', async (req,res) =>{
     const passengers = await passengerDatabase.load()
-    await passengerDatabase.save([yali, memo]);
-    await driverDatabase.save([driver]);
+    res.send(flatted.stringify(passengers))
+})
 
-    const Betul = new Passenger("Betül","Esengelersss")
-    Betul.book(driver,"LosAngeles","Baküü")
-    await passengerDatabase.insert(Betul)
-    passengers.forEach(print)
-
-  } catch (error) {
-    return console.log(error);
-  }
-})()
-
-// console.log("Write dbs");
-// passengerDatabase.save([memo, yali], () => {
-//   console.log("Wrote passenger");
-//   driverDatabase.save([driver], () => {
-//     console.log("done");
-//     const ahmet = Passenger.create({name: "Ahmet", location: "LA"})
-//     passengerDatabase.insert(ahmet, ()=> {
-//       passengerDatabase.load((err,passengers) => {
-//         passengers.forEach(print)
-//       })
-//     })
-//   })
-// })
-//adssadas
+app.listen(port, () =>{
+    console.log(`Example app listening on port ${port}`)
+})
