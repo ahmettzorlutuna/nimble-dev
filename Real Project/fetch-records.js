@@ -5,6 +5,7 @@ const print = require("./lib/print-booking-history");
 
 const memo = new Passenger("Memo", "NJ");
 const yali = new Passenger("Yali", "Miami");
+const max = new Passenger("Max","Spa")
 
 const driver = new Driver("Driver", "Miami");
 
@@ -20,6 +21,8 @@ const booking7 = yali.book(driver, "İstanbul", "Boston");
     // const passengers = await passengerDatabase.load()
     await passengerDatabase.save([yali, memo]);
     await driverDatabase.save([driver]);
+    await passengerDatabase.insert([max])
+    await passengerDatabase.update(max)
 
     // const Betul = new Passenger("Betül","Esengelersss")
     // Betul.book(driver,"LosAngeles","Baküü")
