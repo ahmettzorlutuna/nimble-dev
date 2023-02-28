@@ -1,23 +1,12 @@
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(http-equiv="X-UA-Compatible", content="IE=edge")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Document
-        style body{font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;}
-    body
+extends layout
+block content
     h1 Welcome Passengers
     p There are #{passengers.length} passenger waiting..
     ol
         each passenger in passengers
-            h3 #{passenger.name}'s Booking history
-            ol 
-            if passenger.bookings.length
-                each booking in passenger.bookings
-                    li from #{booking.origin} to #{booking.destination}
-            else
-                p #{passenger.name} has no bookings yet
+            li
+                a(href=`/passengers/${passenger.id}`) #{passenger.name}
+            
 
             
         
