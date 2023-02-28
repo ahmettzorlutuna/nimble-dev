@@ -5,7 +5,7 @@ const print = require("./lib/print-booking-history");
 
 const memo = new Passenger("Memo", "NJ");
 const yali = new Passenger("Yali", "Miami");
-const max = new Passenger("Max","Spa")
+const max = new Passenger("Max","Spa");
 
 const driver = new Driver("Driver", "Miami");
 
