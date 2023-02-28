@@ -56,7 +56,7 @@ class BaseDatabase{
     //With promise
     async find(id){
         const objects = await this.load()
-        objects.find(o => o.id == id)
+        return objects.find(o => o.id == id)
     }
 }
 
