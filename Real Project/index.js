@@ -21,8 +21,7 @@ app.get('/passengers', async (req,res) =>{
 })
 //Post request for new Passenger
 app.post('/passengers', async(req, res, next) => {
-    const newPerson = Passenger.create(req.body)
-    await passengerDatabase.insert(newPerson)
+    const newPerson = await passengerDatabase.insert(req.body)
     //res.writeHead(200, {'content-type': 'text/html'})
     res.send(newPerson)
 })
@@ -32,6 +31,11 @@ app.get('/passengers/:passengerId', async (req,res) =>{
     const passenger = await passengerDatabase.find(req.params.passengerId)
     if(!passenger) return res.status(404).send('Cannot find passenger')
     res.render('passenger', {passenger})
+})
+
+app.delete('/passengers/:passengerId', async(req,res) =>{
+    await passengerDatabase.removeBy('id', req.params.passengerId)
+    res.end('OK')
 })
 
 app.listen(port, () =>{
