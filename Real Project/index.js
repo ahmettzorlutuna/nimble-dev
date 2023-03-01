@@ -18,7 +18,7 @@ const booking7 = yali.book(driver, "İstanbul", "Boston");
 // passengerDatabase.save([memo,yali]).then(() => {
 //   console.log("Wrote passenger");
 //   driverDatabase.save([driver]).then(() => {
-//     console.log("wrote driver");
+//     console.log("wrote driverr");
 //     const ahmet = Passenger.create({name: "Ahmet", location: "LA"})
 
 //     passengerDatabase.insert(ahmet)
