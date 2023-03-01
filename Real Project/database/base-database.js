@@ -30,13 +30,24 @@ class BaseDatabase{
     //Bir fonksiyonun içnide await keyword ünü kullanıyorsak o fonksiyonun asenkron olduğunu async olarak belirtmemiz gerekiyor.
     async insert (object){
         const objects = await this.load()
-        objects.push(object)
-        return this.save(objects)
+        if(!(object instanceof this.model)){
+            object = this.model.create(object)
+            objects.push(object)
+        }
+        await this.save(objects)
+        return object
     }
     
     async remove(index){
         const objects = await this.load()
         objects.splice(index,1)
+        return this.save(objects)
+    }
+
+    async removeBy(property, value){
+        const objects = await this.load()
+        const index = objects.findIndex(o => o[property] == value)
+        objects.splice(index, 1)
         return this.save(objects)
     }
 
