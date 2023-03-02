@@ -26,6 +26,8 @@ app.post('/passengers', async(req, res, next) => {
     res.send(newPerson)
 })
 
+//Ulan ne kod yazmışım bee
+
 //Detail
 app.get('/passengers/:passengerId', async (req,res) =>{
     const passenger = await passengerDatabase.find(req.params.passengerId)
