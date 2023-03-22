@@ -36,6 +36,7 @@ router.get('/:passengerId', async (req,res) =>{
     res.render('passenger', {passenger})
 })
 
+//Passenger Delete
 router.delete('/:passengerId', async(req,res) =>{
     await passengerDatabase.removeBy('id', req.params.passengerId)
     res.end('OK')
