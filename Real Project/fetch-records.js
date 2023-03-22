@@ -5,7 +5,7 @@ const print = require("./lib/print-booking-history");
 
 const memo = new Passenger("Memo", "NJ");
 const yali = new Passenger("Yali", "Miami");
-const max = new Passenger("Max","Spa");
+const max = new Passenger("Max", "Spa");
 
 const driver = new Driver("Driver", "Miami");
 
@@ -15,21 +15,15 @@ const booking3 = memo.book(driver, "Tokyo", "Korea");
 const booking6 = yali.book(driver, "LA", "Mıami");
 const booking7 = yali.book(driver, "İstanbul", "Boston");
 
-
 (async () => {
   try {
-    // const passengers = await passengerDatabase.load()
-    await passengerDatabase.save([yali, memo]);
-    await driverDatabase.save([driver]);
-    await passengerDatabase.insert([max])
-    await passengerDatabase.update(max)
-
-    // const Betul = new Passenger("Betül","Esengelersss")
-    // Betul.book(driver,"LosAngeles","Baküü")
-    // await passengerDatabase.insert(Betul)
-    // passengers.forEach(print)
-
+    // await passengerDatabase.save([yali, memo]);
+    // await driverDatabase.save([driver]);
+    // await passengerDatabase.insert([max])
+    // await passengerDatabase.update(max)
+    const data = await passengerDatabase.load();
+    console.log(data);
   } catch (error) {
     return console.log(error);
   }
-})()
+})();
