@@ -17,25 +17,31 @@ class BaseDatabase{
     }
     //With promise
     load(){
-        return new Promise((resolve,reject) => {
-            fs.readFile(`${__dirname}/${this.filename}.json`, 'utf8',(err,file) =>{
-                if(err) return reject(err)
-                const objects = flatted.parse(file)
-                resolve(objects.map(this.model.create)) //callback(err,file)
-            })
-        })
+        return this.model.find({})
+        //Without mongoose
+        // return new Promise((resolve,reject) => {
+        //     fs.readFile(`${__dirname}/${this.filename}.json`, 'utf8',(err,file) =>{
+        //         if(err) return reject(err)
+        //         const objects = flatted.parse(file)
+        //         resolve(objects.map(this.model.create)) //callback(err,file)
+        //     })
+        // })
     }
     //With promise
     //In this api first time we using load and save api
     //Bir fonksiyonun içnide await keyword ünü kullanıyorsak o fonksiyonun asenkron olduğunu async olarak belirtmemiz gerekiyor.
     async insert (object){
-        const objects = await this.load()
-        if(!(object instanceof this.model)){
-            object = this.model.create(object)
-            objects.push(object)
-        }
-        await this.save(objects)
-        return object
+        const instance = await this.model.create(object)
+        return instance
+
+        //Without mongoose
+        // const objects = await this.load()
+        // if(!(object instanceof this.model)){
+        //     object = this.model.create(object)
+        //     objects.push(object)
+        // }
+        // await this.save(objects)
+        // return object
     }
     
     async remove(index){
@@ -44,7 +50,10 @@ class BaseDatabase{
         return this.save(objects)
     }
 
-    async removeBy(property, value){
+    async removeBy(value){
+        return this.model.deleteOne({["_id"]: value})
+
+        //Without Mongoose
         const objects = await this.load()
         const index = objects.findIndex(o => o[property] == value)
         objects.splice(index, 1)
