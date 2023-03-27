@@ -38,8 +38,15 @@ router.get('/:passengerId', async (req,res) =>{
 
 //Passenger Delete
 router.delete('/:passengerId', async(req,res) =>{
-    await passengerDatabase.removeBy(req.params.passengerId)
+    await passengerDatabase.removeBy('_id',req.params.passengerId)
     res.end('OK')
+})
+
+router.patch('/:passengerId', async(req,res) => {
+    const {passengerId} = req.params
+    const {name} = req.body
+    await passengerDatabase.update(passengerId, {name}) // passed arg {name} is {name: 'User1'}  name is User1
+    res.send('ok')
 })
 
 module.exports = router
