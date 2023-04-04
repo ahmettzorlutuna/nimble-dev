@@ -1,0 +1,15 @@
+extends layout
+block content
+    h1 Welcome Drivers
+    p There are #{drivers.length} passenger waiting..
+    ol
+        each driver in drivers
+            li
+                a(href=`/drivers/${driver.id}`) #{driver.name}
+            
+
+            
+        
+            
+                
+        
