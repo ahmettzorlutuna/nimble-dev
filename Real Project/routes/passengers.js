@@ -42,6 +42,7 @@ router.delete('/:passengerId', async(req,res) =>{
     res.end('OK')
 })
 
+//Passenger Update
 router.patch('/:passengerId', async(req,res) => {
     const {passengerId} = req.params
     const {name} = req.body
