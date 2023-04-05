@@ -1,4 +1,5 @@
 const PassengersRouter = require('./routes/passengers')
+const DriversRouter = require('./routes/drivers')
 const IndexRouter = require('./routes/index')
 const bodyParser = require('body-parser')
 const express = require('express') 
@@ -10,6 +11,7 @@ const port = 3001
 
 app.set('view engine','pug')
 app.use('/passengers', PassengersRouter)
+app.use('/drivers', DriversRouter)
 app.use('/', IndexRouter)
 
 
