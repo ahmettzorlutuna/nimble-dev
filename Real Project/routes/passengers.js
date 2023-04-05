@@ -23,10 +23,9 @@ router.post('/:passengerId/bookings',async (req,res) => {
     const passenger = await passengerDatabase.find(passengerId)
     const driver = await driverDatabase.find(driverId) 
 
-    passenger.book(driver, origin, destination)
-    passengerDatabase.update(passenger)
+    const result = await passenger.book(driver, origin, destination)
 
-    res.send(flatted.stringify(passenger))
+    res.send(result)
 })
 
 //Detail
