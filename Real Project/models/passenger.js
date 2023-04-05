@@ -9,6 +9,11 @@ const PassengerSchema = new mongoose.Schema({
     bookings: []
 })
 
+PassengerSchema.methods.book = async function(driver, origin, destination){
+    console.log('book', ...arguments)
+    return this
+}
+
 module.exports = mongoose.model('Passenger', PassengerSchema)
 
 // class Passenger {
