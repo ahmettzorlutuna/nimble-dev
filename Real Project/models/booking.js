@@ -7,4 +7,4 @@ const BookingSchema = new mongoose.Schema({
     destination: String
 })
 
-module.exports = mongoose.model('Driver', DriverSchema)
+module.exports = mongoose.model('Booking', BookingSchema)
