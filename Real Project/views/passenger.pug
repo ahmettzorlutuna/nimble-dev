@@ -6,7 +6,7 @@ block content
     if passenger.bookings.length
         ol
             each booking in passenger.bookings
-                li #{passenger.name} is going from #{booking.origin} to #{booking.destination}
+                li #{passenger.name} is going from #{booking.origin} to #{booking.destination} with #{booking.driver.name}
     else
         no #{passenger.name}'s has bookings yet  
     
