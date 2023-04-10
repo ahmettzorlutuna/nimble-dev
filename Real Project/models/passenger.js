@@ -6,14 +6,20 @@ const mongoose = require('mongoose')
 const PassengerSchema = new mongoose.Schema({
     name: String,
     location: String,
-    bookings: []
+    bookings: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Booking', 
+        autopopulate: true
+    }]
 })
+
+PassengerSchema.plugin(require('mongoose-autopopulate'));
 
 PassengerSchema.methods.book = async function(driver, origin, destination){
     // const booking = new Booking(driver, this, origin, destination) //Old method. İf we do it like this we need to update again.
     const booking = await Booking.create({driver, passenger: this, origin, destination})
     // this.bookings.push(booking) //Circular dependencies 
-    this.bookings.push(booking._id) 
+    this.bookings.push(booking) 
     await this.save()
     return booking
 }
