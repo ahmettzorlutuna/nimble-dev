@@ -7,7 +7,7 @@ class BaseDatabase{
     }
     //With promise
     save(objects){
-        return this.model.insers(objects)
+        return this.model.insert(objects)
         
         //Without mongoose
         // return new Promise((resolve,reject) => {
