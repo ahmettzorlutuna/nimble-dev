@@ -4,12 +4,12 @@ const BookingSchema = new mongoose.Schema({
     driver: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Driver',
-        autopopulate: true
+        autopopulate: { maxDepth: 1}
     },
     passenger : {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Passenger',
-        autopopulate: true
+        autopopulate: { maxDepth: 1}
     },
     origin: String,
     destination: String
