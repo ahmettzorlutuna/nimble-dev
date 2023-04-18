@@ -79,6 +79,9 @@ class BaseDatabase{
         //Without Mongoose
         return (await this.load()).find(o => o[property] == value);
     }
+    async query(obj){
+        return this.model.find(obj)
+    }
 }
 
 module.exports = BaseDatabase
