@@ -1,0 +1,20 @@
+extends layout
+block content
+    h1 Welcome Bookings
+    p There are #{bookings.length} bookings.
+    ol
+        each booking in bookings
+            li
+                p Passenger
+                    a(href=`/passengers/${booking.passenger.id}`) #{booking.passenger.name}
+                p Driver
+                    a(href=`/drivers/${booking.driver.id}`) #{booking.driver.name}
+                p Origin #{booking.origin}
+                p Destination #{booking.destination}
+            
+
+            
+        
+            
+                
+        
