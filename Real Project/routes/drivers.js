@@ -14,17 +14,23 @@ router.post('/', async(req, res, next) => {
     res.send(newPerson)
 })
 
+//driver Delete
+router.delete('/:driverId', async(req,res) =>{
+    await driverService.removeBy('_id',req.params.driverId)
+    res.end('OK')
+})
+
+//Young drivers
+router.get('/young-drivers', async(req,res) => {
+    const drivers = await driverService.findYoungDrivers()
+    res.render('drivers',{drivers})
+})
+
 //Detail
 router.get('/:driverId', async (req,res) =>{
     const driver = await driverService.find(req.params.driverId)
     if(!driver) return res.status(404).send('Cannot find driver')
     res.render('driver', {driver})
-})
-
-//driver Delete
-router.delete('/:driverId', async(req,res) =>{
-    await driverService.removeBy('_id',req.params.driverId)
-    res.end('OK')
 })
 
 //driver Update
@@ -34,5 +40,7 @@ router.patch('/:driverId', async(req,res) => {
     await driverService.update(driverId, {name}) // passed arg {name} is {name: 'User1'}  name is User1
     res.send('ok')
 })
+
+
 
 module.exports = router
