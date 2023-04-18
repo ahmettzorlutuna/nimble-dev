@@ -1,4 +1,4 @@
-const {passengerService, driverService} = require('../services')
+const {passengerService, driverService, bookingService} = require('../services')
 const flatted = require('flatted')
 const express = require('express');
 const router = express.Router();
@@ -10,9 +10,13 @@ router.get('/', async (req,res) =>{
 })
 //Post request for new Passenger
 router.post('/', async(req, res, next) => {
-    const newPerson = await passengerService.insert(req.body)
-    //res.writeHead(200, {'content-type': 'text/html'})
-    res.send(newPerson)
+    try {
+        const newPerson = await passengerService.insert(req.body)
+        //res.writeHead(200, {'content-type': 'text/html'})
+        res.send(newPerson)
+    } catch (error) {
+        next(error)
+    }
 })
 
 //Booking post request
@@ -20,7 +24,7 @@ router.post('/:passengerId/bookings',async (req,res) => {
     const {passengerId} = req.params
     const {driverId, origin, destination} = req.body
 
-    const result = await passengerService.book(driverId, passengerId, origin, destination)
+    const result = await bookingService.book(driverId, passengerId, origin, destination)
 
     res.send(result)
 })
