@@ -10,3 +10,5 @@ function printBooking(booking) {
 
 
 module.exports = printAllBookings
+
+module.exports = (a, b) => a + b;
