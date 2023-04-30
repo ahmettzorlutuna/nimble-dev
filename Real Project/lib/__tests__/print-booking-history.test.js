@@ -1,5 +1,6 @@
-const sum = require('../print-booking-history')
+const printAllBookings = require('../print-booking-history')
 
-test('adds 1 and 2 should be 3', () => {
-    expect(sum(1,2)).toBe(3);
+test('print passenger bookings', () => {
+    const rv = printAllBookings(passenger)
+    expect(rv).toBe(3);
 })
