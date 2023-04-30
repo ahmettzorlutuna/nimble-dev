@@ -5,7 +5,7 @@ function printAllBookings(passenger) {
 }
 
 function printBooking(booking) {
-    console.log(`${booking.passenger.name.yellow} is going ${colors.yellow.bold(booking.destination)} from ${colors.yellow(booking.origin)} now. Estimated time not calculated yet.`)
+    console.log(`${colors.yellow(booking.passenger.name)} is going ${colors.yellow(booking.destination)} from ${colors.yellow(booking.origin)} now. Estimated time not calculated yet.`)
 }
 
 
