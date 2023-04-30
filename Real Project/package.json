@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "watch": "nodemon -i '*.json' index.js",
-    "test": "jest"
+    "test": "jest",
+    "test-watch": "jest --watch"
   },
   "author": "Ahmet Zorlutuna <ahmettayyip3439@gmail.com>",
   "license": "ISC",
