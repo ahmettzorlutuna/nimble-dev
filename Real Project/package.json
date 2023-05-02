@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "watch": "nodemon -i '*.json' index.js",
-    "test": "jest",
-    "test-watch": "jest --watch"
+    "test": "jest --verbose --detectOpenHandles",
+    "test-watch": "jest --verbose --watch"
   },
   "author": "Ahmet Zorlutuna <ahmettayyip3439@gmail.com>",
   "license": "ISC",
@@ -21,6 +21,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "jest": "^29.5.0"
+    "jest": "^29.5.0",
+    "supertest": "^6.3.3"
   }
 }
