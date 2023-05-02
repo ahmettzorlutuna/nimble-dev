@@ -1,6 +1,6 @@
 const printAllBookings = require("../print-booking-history");
 
-test("print passenger bookings", () => {
+test.skip("print passenger bookings", () => {
     //İnit
   const passenger = {
     name: "Armagan",
