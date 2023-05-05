@@ -1,6 +1,9 @@
 const colors = require('colors')
 
 function printAllBookings(passenger) {
+    if(passenger.bookings.length == 0){
+        return console.log(`${colors.yellow(passenger.name)} has no bookings yet`)
+    }
     passenger.bookings.forEach(printBooking)
 }
 
