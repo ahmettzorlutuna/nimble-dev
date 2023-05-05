@@ -4,10 +4,10 @@
   "description": "My npm files for real time applicationnnn",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "watch": "nodemon -i '*.json' index.js",
-    "test": "jest --verbose --detectOpenHandles",
-    "test-watch": "jest --verbose --watch"
+    "start": "node ./bin/www",
+    "watch": "nodemon -i '*.json' ./bin/www",
+    "test": "jest --coverage --verbose",
+    "test-watch": "jest --coverage --verbose --watch"
   },
   "author": "Ahmet Zorlutuna <ahmettayyip3439@gmail.com>",
   "license": "ISC",
