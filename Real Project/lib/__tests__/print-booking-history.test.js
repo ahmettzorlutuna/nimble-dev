@@ -1,6 +1,6 @@
 const printAllBookings = require("../print-booking-history");
 
-test.skip("print passenger bookings", () => {
+test("print passenger bookings when a passenger has a bookings", () => {
     //İnit
   const passenger = {
     name: "Armagan",
@@ -24,4 +24,23 @@ test.skip("print passenger bookings", () => {
   
   //TearDown
   consoleSpy.mockRestore()
+});
+
+test("print warning message when a passenger has no bookings", () => {
+  //İnit
+const passenger = {
+  name: "Armagan",
+  bookings: [],
+};
+
+const consoleSpy = jest.spyOn(console, 'log')
+
+//Test
+printAllBookings(passenger);
+
+//Assertions
+expect(consoleSpy).toHaveBeenCalledWith('Armagan has no bookings yet')
+
+//TearDown
+consoleSpy.mockRestore()
 });
