@@ -7,9 +7,13 @@ test('create a new passenger', async () => {
         name: 'Ahmet',
         location: 'Canada'
     }
-    const response = await request.post('/passengers').send(passengerToCreate)
-
-    expect(response.status).toBe(200)
+    const response = await request
+        .post('/passengers')
+        .send(passengerToCreate)
+    
+    const passengerCreated = response.body
+    expect(passengerCreated).toMatchObject(passengerToCreate)
+    expect(passengerCreated.bookings).toEqual([])
 })
 
-afterAll(() => server.close())
+// afterAll(() => server.close())
